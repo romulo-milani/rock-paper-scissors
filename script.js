@@ -33,7 +33,13 @@ function getComputerChoice() {
 function getHumanChoice() {
     let humanChoice = prompt("rock, paper or scissor?");
     humanChoice = humanChoice.toLowerCase();
-    return convertStringChoiceToNumeric(humanChoice);
+    if (humanChoice != "rock" && humanChoice != "paper" && humanChoice != "scissors") {
+        console.log("you can only pick ROCK, PAPER or SCISSORS. Try again!")
+        return getHumanChoice();
+    } else  {
+        return convertStringChoiceToNumeric(humanChoice);
+    }
+    
 }
 
 function playRound(computerChoice, humanChoice) {
