@@ -79,7 +79,7 @@ function playRound(computerChoice, humanChoice) {
         round++;
     }
 }
-
+/*REMOVED THE FUNCTION THAT PLAYS 5 ROUNDS
 function playGame() {
     let computerSelection;
     let humanSelection;
@@ -126,4 +126,4 @@ function playGame() {
     }
 }
 
-playGame();
+playGame();*/
