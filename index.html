@@ -5,18 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <title>Rock, Paper, Scissors</title>
 </head>
 <body>
+    <h1>Pedra, Papel ou Tesoura?</h1>
+    <h2>Melhor de Cinco!</h2>
+    <h3>Faça sua escolha</h3>
     <div class="playerOptions">
-        <button id="rock">rock</button>
-        <button id="paper">paper</button>
-        <button id="scissors">scissors</button>
+        <button class="pedra">
+            <img class="pedra" src="imagens/pedra.png" alt="pedra">
+            <p class="pedra">pedra</p>
+        </button>
+        <button id="papel" value="papel">
+            <img class="btn-img" src="imagens/papel.png" alt="papel">
+            <p>papel</p>
+        </button>
+        <button id="tesoura" value="tesoura">
+            <img class="btn-img" src="imagens/tesoura.png" alt="tesoura">
+            <p>tesoura</p>
+        </button>
     </div>
-    <h3 class="player-score"></h3>
-    <h3 class="computer-score"></h3>
+    <h4 class="player-score"></h4>
+    <h4 class="computer-score"></h4>
     <div><p class="player-choice">Player chooses: <span></span></p></div>
     <div><p class="computer-choice">Computer chooses: <span></span></p></div>
-    <div><p class="winner">Winner: <span></span></p></div>
+    <div><p class="winner">Vencedor da Rodada: <span></span></p></div>
 </body>
 </html>

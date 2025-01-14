@@ -1,13 +1,13 @@
-let rock = 0;
-let paper = 1;
-let scissors = 2;
+let pedra = 0;
+let papel = 1;
+let tesoura = 2;
 let humanScore = 0;
 let computerScore = 0;
 let round = 1;
 let winner = "";
-let rockButton = document.querySelector("#rock");
-let paperButton = document.querySelector("#paper");
-let scissorsButton = document.querySelector("#scissors");
+let pedraButton = document.querySelector("#pedra");
+let papelButton = document.querySelector("#papel");
+let tesouraButton = document.querySelector("#tesoura");
 let playerOptions = document.querySelector(".playerOptions");
 let playerScoreSpan = document.querySelector(".player-score");
 let computerScoreSpan = document.querySelector(".computer-score")
@@ -19,14 +19,16 @@ playerOptions.addEventListener("click", playRound);
 
 function getComputerChoice() {
     let computerNumericChoice = Math.floor(Math.random() * 3);
-    if (computerNumericChoice == 0) return "rock";
-    if (computerNumericChoice == 1) return "paper";
-    if (computerNumericChoice == 2) return "scissors";
+    if (computerNumericChoice == 0) return "pedra";
+    if (computerNumericChoice == 1) return "papel";
+    if (computerNumericChoice == 2) return "tesoura";
 }
 
 function getHumanChoice(e) {
-    let humanChoice = e.target.textContent;
-    return humanChoice;    
+    //let humanChoice = e.target.textContent;
+    let humanChoice = e.target.className;
+    console.log(humanChoice);
+    return humanChoice;
 }
 
 function endgame() {
@@ -35,7 +37,7 @@ function endgame() {
     document.querySelector(".winner").remove();
 
     let h1 = document.createElement('h1');
-    h1.textContent = `The winner is: ${winner}`;
+    h1.textContent = `Vencedor do Jogo: ${winner}`;
     document.querySelector("body").appendChild(h1);
 }
 
@@ -50,56 +52,56 @@ function playRound(e) {
     let computerSpan = document.querySelector(".computer-choice > span");
     computerSpan.textContent = `${computerChoice}`;
 
-    if (computerChoice == "rock") {
+    if (computerChoice == "pedra") {
         switch(humanChoice) {
-            case "rock": 
-            winnerSpan.textContent = "Tie!";
+            case "pedra": 
+            winnerSpan.textContent = "Empate!";
             humanScore += 1;
             computerScore += 1;
             break;
 
-            case "paper": 
-            winnerSpan.textContent = "Player wins!";
+            case "papel": 
+            winnerSpan.textContent = "Você!";
             humanScore += 1;
             break;
 
-            case "scissors": 
-            winnerSpan.textContent = "Computer wins!";
+            case "tesoura": 
+            winnerSpan.textContent = "Computador!";
             computerScore += 1;
             break;
         }        
-    } else if (computerChoice == "paper") {
+    } else if (computerChoice == "papel") {
         switch(humanChoice) {
-            case "rock": 
-            winnerSpan.textContent = "Computer wins!";
+            case "pedra": 
+            winnerSpan.textContent = "Computador!";
             computerScore += 1;
             break;
 
-            case "paper": 
-            winnerSpan.textContent = "Tie!";
+            case "papel": 
+            winnerSpan.textContent = "Empate!";
             computerScore += 1;
             humanScore += 1;
             break;
 
-            case "scissors": 
-            winnerSpan.textContent = "Player wins!";
+            case "tesoura": 
+            winnerSpan.textContent = "Você!";
             humanScore += 1;
             break;
         } 
-    } else if (computerChoice == "scissors") {
+    } else if (computerChoice == "tesoura") {
         switch(humanChoice) {
-            case "rock": 
-            winnerSpan.textContent = "Player wins!";
+            case "pedra": 
+            winnerSpan.textContent = "Você!";
             humanScore += 1;
             break;
 
-            case "paper": 
-            winnerSpan.textContent = "Computer wins!";
+            case "papel": 
+            winnerSpan.textContent = "Computador!";
             computerScore += 1;
             break;
 
-            case "scissors": 
-            winnerSpan.textContent = "Tie!";
+            case "tesoura": 
+            winnerSpan.textContent = "Empate!";
             humanScore += 1;
             computerScore += 1;
             break;
@@ -110,17 +112,17 @@ function playRound(e) {
     computerScoreSpan.textContent = `Computer score: ${computerScore}`;
     
     if (humanScore == 5 && computerScore == 5) {
-        winner = "tie";
+        winner = "Empate!";
         endgame();
     }
 
     if (humanScore == 5 && computerScore < 5) {
-        winner = "player";
+        winner = "Você";
         endgame();
     }
 
     if (humanScore < 5 && computerScore == 5) {
-        winner = "computer";
+        winner = "Computador!";
         endgame();
     }
 }
