@@ -9,11 +9,8 @@ let pedraButton = document.querySelector("#pedra");
 let papelButton = document.querySelector("#papel");
 let tesouraButton = document.querySelector("#tesoura");
 let playerOptions = document.querySelector(".playerOptions");
-let playerScoreSpan = document.querySelector(".player-score");
-let computerScoreSpan = document.querySelector(".computer-score")
-
-playerScoreSpan.textContent = `Player score: ${humanScore}`;
-computerScoreSpan.textContent = `Computer score: ${computerScore}`;
+let playerScoreSpan = document.querySelector(".score-jogador");
+let computerScoreSpan = document.querySelector(".score-computador")
 
 playerOptions.addEventListener("click", playRound);
 
@@ -25,9 +22,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice(e) {
-    //let humanChoice = e.target.textContent;
     let humanChoice = e.target.className;
-    console.log(humanChoice);
     return humanChoice;
 }
 
@@ -44,13 +39,23 @@ function endgame() {
 function playRound(e) {
     let humanChoice = getHumanChoice(e);
     let computerChoice = getComputerChoice();
+
+    //mostra a escolha do jogador
+    let divResultadoJogador = document.querySelector("#id-resultado-jogador");
+    let imgJogador = document.querySelector("#img-jogador");
+    imgJogador.setAttribute("src", `imagens/${humanChoice}.png`);
+    divResultadoJogador.appendChild(imgJogador);
+    divResultadoJogador.style.backgroundColor = "white";
+
+    //mostra a escolha do computador
+    let divResultadoComputador = document.querySelector("#id-resultado-computador");
+    let imgComputador = document.querySelector("#img-computador");
+    imgComputador.setAttribute("src", `imagens/${computerChoice}.png`);
+    divResultadoComputador.appendChild(imgComputador);
+    divResultadoComputador.style.backgroundColor = "white";
+
     let winnerSpan = document.querySelector(".winner > span");
 
-    let humanSpan = document.querySelector(".player-choice > span");
-    humanSpan.textContent = `${humanChoice}`;
-
-    let computerSpan = document.querySelector(".computer-choice > span");
-    computerSpan.textContent = `${computerChoice}`;
 
     if (computerChoice == "pedra") {
         switch(humanChoice) {
@@ -108,8 +113,8 @@ function playRound(e) {
         } 
     }
 
-    playerScoreSpan.textContent = `Player score: ${humanScore}`;
-    computerScoreSpan.textContent = `Computer score: ${computerScore}`;
+    playerScoreSpan.textContent = `${humanScore}`;
+    computerScoreSpan.textContent = `${computerScore}`;
     
     if (humanScore == 5 && computerScore == 5) {
         winner = "Empate!";
