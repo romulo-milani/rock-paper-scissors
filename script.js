@@ -27,9 +27,11 @@ function getHumanChoice(e) {
 }
 
 function endgame() {
-    document.querySelector(".player-choice").remove();
-    document.querySelector(".computer-choice").remove();
-    document.querySelector(".winner").remove();
+    let divResultado = document.querySelector(".resultado");
+    while(divResultado.lastChild) {
+        divResultado.removeChild(divResultado.lastElementChild);
+    }
+    
 
     let h1 = document.createElement('h1');
     h1.textContent = `Vencedor do Jogo: ${winner}`;
@@ -118,16 +120,19 @@ function playRound(e) {
     
     if (humanScore == 5 && computerScore == 5) {
         winner = "Empate!";
+        winnerSpan.textContent = "";
         endgame();
     }
 
     if (humanScore == 5 && computerScore < 5) {
         winner = "Você";
+        winnerSpan.textContent = "";
         endgame();
     }
 
     if (humanScore < 5 && computerScore == 5) {
         winner = "Computador!";
+        winnerSpan.textContent = "";
         endgame();
     }
 }
