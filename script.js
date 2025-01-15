@@ -45,18 +45,18 @@ function playRound(e) {
     let imgJogador = document.querySelector("#img-jogador");
     imgJogador.setAttribute("src", `imagens/${humanChoice}.png`);
     divResultadoJogador.appendChild(imgJogador);
-    divResultadoJogador.style.backgroundColor = "white";
+    divResultadoJogador.style.backgroundColor = "rgb(0, 255, 174)";
 
     //mostra a escolha do computador
     let divResultadoComputador = document.querySelector("#id-resultado-computador");
     let imgComputador = document.querySelector("#img-computador");
     imgComputador.setAttribute("src", `imagens/${computerChoice}.png`);
     divResultadoComputador.appendChild(imgComputador);
-    divResultadoComputador.style.backgroundColor = "white";
+    divResultadoComputador.style.backgroundColor = "rgb(245, 69, 137)";
 
     let winnerSpan = document.querySelector(".winner > span");
 
-
+    //determina o vencedor e aumenta o score
     if (computerChoice == "pedra") {
         switch(humanChoice) {
             case "pedra": 
@@ -66,19 +66,19 @@ function playRound(e) {
             break;
 
             case "papel": 
-            winnerSpan.textContent = "Você!";
+            winnerSpan.textContent = "Você venceu a rodada!";
             humanScore += 1;
             break;
 
             case "tesoura": 
-            winnerSpan.textContent = "Computador!";
+            winnerSpan.textContent = "Computador venceu a rodada!";
             computerScore += 1;
             break;
         }        
     } else if (computerChoice == "papel") {
         switch(humanChoice) {
             case "pedra": 
-            winnerSpan.textContent = "Computador!";
+            winnerSpan.textContent = "Computador venceu a rodada!";
             computerScore += 1;
             break;
 
@@ -89,19 +89,19 @@ function playRound(e) {
             break;
 
             case "tesoura": 
-            winnerSpan.textContent = "Você!";
+            winnerSpan.textContent = "Você venceu a rodada!";
             humanScore += 1;
             break;
         } 
     } else if (computerChoice == "tesoura") {
         switch(humanChoice) {
             case "pedra": 
-            winnerSpan.textContent = "Você!";
+            winnerSpan.textContent = "Você venceu a rodada!";
             humanScore += 1;
             break;
 
             case "papel": 
-            winnerSpan.textContent = "Computador!";
+            winnerSpan.textContent = "Computador venceu a rodada!";
             computerScore += 1;
             break;
 
