@@ -28,13 +28,10 @@ function getHumanChoice(e) {
 
 function endgame() {
     let divResultado = document.querySelector(".resultado");
-    while(divResultado.lastChild) {
-        divResultado.removeChild(divResultado.lastElementChild);
-    }
-    
+    divResultado.remove();
 
     let h1 = document.createElement('h1');
-    h1.textContent = `Vencedor do Jogo: ${winner}`;
+    h1.textContent = `${winner} venceu o jogo!`;
     document.querySelector("body").appendChild(h1);
 }
 
